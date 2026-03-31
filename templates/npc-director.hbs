@@ -1,0 +1,56 @@
+<form class="sla-npc-director-form">
+  <div class="sla-npc-director-toolbar">
+    <button type="button" data-action="refresh">Refresh Targets</button>
+    <button type="button" data-action="save">Save States</button>
+    <button type="button" data-action="chat">Whisper GM Summary</button>
+  </div>
+
+  {{#if entries.length}}
+    {{#each entries}}
+      <section class="sla-npc-director-row" data-doc-id="{{docId}}" data-doc-type="{{docType}}">
+        <div>
+          <label>Target</label>
+          <input type="text" value="{{name}}" disabled>
+        </div>
+        <div>
+          <label>Stance</label>
+          <select data-field="stance">
+            {{#each ../stanceOptions}}
+              <option value="{{this}}" {{#if (eq this ../stance)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div>
+          <label>Morale</label>
+          <select data-field="morale">
+            {{#each ../moraleOptions}}
+              <option value="{{this}}" {{#if (eq this ../morale)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div>
+          <label>Suppression</label>
+          <select data-field="suppression">
+            {{#each ../suppressionOptions}}
+              <option value="{{this}}" {{#if (eq this ../suppression)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div>
+          <label>Intent</label>
+          <select data-field="intent">
+            {{#each ../intentOptions}}
+              <option value="{{this}}" {{#if (eq this ../intent)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div>
+          <label>Note</label>
+          <input type="text" data-field="note" value="{{note}}">
+        </div>
+      </section>
+    {{/each}}
+  {{else}}
+    <p>No selected tokens or active combatants found.</p>
+  {{/if}}
+</form>
