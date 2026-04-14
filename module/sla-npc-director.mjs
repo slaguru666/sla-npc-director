@@ -123,6 +123,7 @@ class SlaNpcDirectorApp extends FormApplication {
 }
 
 function appendOpenButton(root, selector, className, label) {
+  if (!game.user?.isGM) return false;
   const header = root?.querySelector(selector);
   if (!header || header.querySelector(`.${className}`)) return false;
   const button = document.createElement("button");
